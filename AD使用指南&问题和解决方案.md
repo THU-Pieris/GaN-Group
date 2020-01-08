@@ -2,6 +2,13 @@
 
 ---
 
+使用指南
+
+https://www.altium.com/documentation/altium-designer/from-idea-to-manufacture-driving-a-pcb-design-through-altium-designer
+（from 鑫源
+
+---
+
 * Manufacturer Component 无法下载？
 
 重启电脑
