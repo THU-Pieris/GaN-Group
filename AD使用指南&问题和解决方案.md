@@ -17,4 +17,6 @@
 #### ref
 
 * 如何获取AD账号？
-  直接上https://live.altium-ru.com/#Join就行了
+  直接上：
+  https://live.altium-ru.com/#Join
+  就行了
