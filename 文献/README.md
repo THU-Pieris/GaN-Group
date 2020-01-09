@@ -19,3 +19,15 @@
 2>2016-Design of GaN-Based MHz Totem-Pole PFC Rectifier
 
 3>2016-Digital-Based Interleaving Control for GaN-Based MHz CRM Totem-Pole PFC
+
+# LLC部分的参考文献（from刘寒玉学长
+
+1>LLC变换器软开关特性及谐振参数优化研究_戴幸涛.pdf	
+
+2>!! A SiC-Based High-Efficiency Isolated Onboard PEV.pdf	
+
+3>1MHz High frequency LLC resonant Converters with synchronous rectifier.pdf	
+
+4>Digital Implementation of Adaptive Synchronous Rectifier (SR) Driving Scheme for LLC Resonant Converters.pdf	
+
+5>! An LLC Resonant DC–DC Converter for Wide.pdf
