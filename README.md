@@ -29,7 +29,7 @@ http://www.ti.com/tool/CONTROLSUITE?keyMatch=CONTROLSUITE&tisearch=Search-EN-eve
 
 ## DSP速成
 
-参考教材：《手把手教你学DSP：基于TMS320F28335》。PDF文件已上载至“文献”。我已另购书籍，预计明日可到。有需要的可以找@余嘉雄借阅
+参考教材：《手把手教你学DSP：基于TMS320F28335》。PDF文件已上载至群文件。我已另购书籍，预计明日可到。有需要的可以找@余嘉雄借阅
 
 ## 阅读原理性文献
 
