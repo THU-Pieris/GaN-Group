@@ -1,0 +1,411 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://G:\INSTALL\ALTIUM\document_lhy\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">2019/8/2</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">19:03:15</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc" class="file"><acronym title="G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc">G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">21</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDRZLBKM0L5BJ0EWDVPTCWN2YM4D5CKEYKIJRSRJCPCZZA45GX0JPJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTXRYOC0OOKTYEDJM5G33ZAHX0L54V1IVYH2QFMLC2RRI4N3NSXCF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD5ZNG00EJLPTCNXNFG12KDVOXONQTKNASOPYFEEFDPINQ2NSV4HN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">17</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBLW4GHVY1TXMDPIKEE0FSQTM0FNVEIY4W4GWZKISZAAQD0ZKUABO">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJDAVM42CWACOGB0AR5XDW5LNJNPPKZKRQ1AQBGMZMMFBI0C1NBDH">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLFM2O2NISF44N5B5AHMI0B2ASIFZM2CL0QYJEIPG1TBTUN15M0SD">Width Constraint (Min=10mil) (Max=999mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0UTWXXLCJCCCCME4MCNIFZHGOFKLC2L2LTPCQYFP2IFIAA4YLV1P">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID35ENIUJVOKEVMVECO2352UXOMD4150PHPMTFDRK3UBEQWCYN2BAH">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAW0TOQU21ARTNMOV1SL23JDJID3UDQUBLLDBCXBQ02DDGMD0FSAI">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDN2OYUY0LBG45OHCZR05AJQVOAHGVMSHRUE5BY0LEYNIU5PF2TZBJ">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3NCWZC4IHO4UJOMB3XRBZPRVKM1MLMXOAIBGAYD3VERYZEF1PXGK">Silk primitive without silk layer</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPI3N4Q1GGLGGOOTETGPDJXPZ1LFLHJUUDPRIQSBCHG5F1K01T4W">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJGSX2L2C1DBTFWV5UGWGKPFXLPFY1LYG4X12YNOYDD0U21DP0FNI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">21</td>
+</tr>
+</table><br><hr><a name="IDD5ZNG00EJLPTCNXNFG12KDVOXONQTKNASOPYFEEFDPINQ2NSV4HN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.146mil|Location2.X=2775mil|Location1.Y=3197.5mil|Location2.Y=5270mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2567.146mil|Location2.X=2775mil|Location1.Y=3197.5mil|Location2.Y=5270mil|Absolute=True">Un-Routed Net Constraint: </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260mil|Location2.X=1494.527mil|Location1.Y=4230mil|Location2.Y=2904.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260mil|Location2.X=1494.527mil|Location1.Y=4230mil|Location2.Y=2904.882mil|Absolute=True">Un-Routed Net Constraint: Net PWM_L_R2 Between Pad P16-4 (1360,4330mil) And Track on layer Top Layer (1394.527,2804.882mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1360mil|Location2.X=1564.689mil|Location1.Y=4230mil|Location2.Y=2819.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1360mil|Location2.X=1564.689mil|Location1.Y=4230mil|Location2.Y=2819.882mil|Absolute=True">Un-Routed Net Constraint: Track (1460mil,4330mil)(1460mil,4435mil)  Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460mil|Location2.X=1660.904mil|Location1.Y=4230mil|Location2.Y=2067.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460mil|Location2.X=1660.904mil|Location1.Y=4230mil|Location2.Y=2067.423mil|Absolute=True">Un-Routed Net Constraint: Track (1560mil,4330mil)(1560mil,4435mil)  Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1560mil|Location2.X=1773.061mil|Location1.Y=4230mil|Location2.Y=2067.083mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1560mil|Location2.X=1773.061mil|Location1.Y=4230mil|Location2.Y=2067.083mil|Absolute=True">Un-Routed Net Constraint: Track (1660mil,4330mil)(1660mil,4410mil)  Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1060mil|Location2.X=1302.795mil|Location1.Y=4230mil|Location2.Y=4142.795mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1060mil|Location2.X=1302.795mil|Location1.Y=4230mil|Location2.Y=4142.795mil|Absolute=True">Un-Routed Net Constraint: Net PWM_H_L2 Between Pad P16-6 (1160,4330mil) And Track on layer Top Layer (1202.795,4042.795mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1097.795mil|Location2.X=1360mil|Location1.Y=3842.795mil|Location2.Y=4430mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1097.795mil|Location2.X=1360mil|Location1.Y=3842.795mil|Location2.Y=4430mil|Absolute=True">Un-Routed Net Constraint: Net PWM_H_L1 Between Track on layer Top Layer (1197.795,3942.795mil) And Pad P16-5 (1260,4330mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2101.472mil|Location2.X=2168.528mil|Location1.Y=3414.189mil|Location2.Y=4653.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2101.472mil|Location2.X=2168.528mil|Location1.Y=3414.189mil|Location2.Y=4653.528mil|Absolute=True">Un-Routed Net Constraint: </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1378.706mil|Location2.X=1578.976mil|Location1.Y=4385.001mil|Location2.Y=4039.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1378.706mil|Location2.X=1578.976mil|Location1.Y=4385.001mil|Location2.Y=4039.882mil|Absolute=True">Un-Routed Net Constraint: </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2142.23mil|Location2.X=2344.048mil|Location1.Y=2004.215mil|Location2.Y=4518.238mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2142.23mil|Location2.X=2344.048mil|Location1.Y=2004.215mil|Location2.Y=4518.238mil|Absolute=True">Un-Routed Net Constraint: </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3870.847mil|Location2.X=4070.945mil|Location1.Y=4952.862mil|Location2.Y=3838.74mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3870.847mil|Location2.X=4070.945mil|Location1.Y=4952.862mil|Location2.Y=3838.74mil|Absolute=True">Un-Routed Net Constraint: Net DC400- Between PolyRegion on layer GND (3970.847,5052.862mil) And Track on layer Bottom Layer (3970.945,3738.74mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2130mil|Location2.X=2344.407mil|Location1.Y=4250mil|Location2.Y=2122.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2130mil|Location2.X=2344.407mil|Location1.Y=4250mil|Location2.Y=2122.203mil|Absolute=True">Un-Routed Net Constraint: Track (2230mil,4350mil)(2255mil,4375mil)  Top Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1408.503mil|Location2.X=1623.461mil|Location1.Y=3939.587mil|Location2.Y=5167.281mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1408.503mil|Location2.X=1623.461mil|Location1.Y=3939.587mil|Location2.Y=5167.281mil|Absolute=True">Un-Routed Net Constraint: </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2765.932mil|Location2.X=2970mil|Location1.Y=4202.5mil|Location2.Y=3700mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2765.932mil|Location2.X=2970mil|Location1.Y=4202.5mil|Location2.Y=3700mil|Absolute=True">Un-Routed Net Constraint: Net AGND Between Track on layer Top Layer (2865.932,4302.5mil) And Track on layer Bottom Layer (2870,3600mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1562.575mil|Location2.X=1772.425mil|Location1.Y=3372.969mil|Location2.Y=3652.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1562.575mil|Location2.X=1772.425mil|Location1.Y=3372.969mil|Location2.Y=3652.622mil|Absolute=True">Un-Routed Net Constraint: Net AC+ Between Pad PowerPad0-1 (1665,3512.795mil) And Pad PowerPad1-1 (1670,3512.795mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3048.307mil|Location2.X=3335mil|Location1.Y=4274.055mil|Location2.Y=3435mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3048.307mil|Location2.X=3335mil|Location1.Y=4274.055mil|Location2.Y=3435mil|Absolute=True">Un-Routed Net Constraint: Net A5V Between Pad JP1-10 (3148.307,4374.055mil) And Track on layer Bottom Layer (3235,3335mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4005mil|Location2.X=4251.452mil|Location1.Y=5050mil|Location2.Y=4080.295mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4005mil|Location2.X=4251.452mil|Location1.Y=5050mil|Location2.Y=4080.295mil|Absolute=True">Un-Routed Net Constraint: Net 9V Between Pad C22-1 (4105,5150mil) And PolyRegion on layer Bottom Layer (4151.452,3980.295mil)</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDBLW4GHVY1TXMDPIKEE0FSQTM0FNVEIY4W4GWZKISZAAQD0ZKUABO"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Clearance Constraint (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1429.726mil|Location2.X=1482.597mil|Location1.Y=4583.742mil|Location2.Y=4628.577mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1429.726mil|Location2.X=1482.597mil|Location1.Y=4583.742mil|Location2.Y=4628.577mil|Absolute=True">Region (0 hole(s)) Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.228mil|Location2.X=1427.661mil|Location1.Y=4597.299mil|Location2.Y=4642.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1384.228mil|Location2.X=1427.661mil|Location1.Y=4597.299mil|Location2.Y=4642.701mil|Absolute=True">Pad C16-2(1405.945mil,4620mil)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1962.403mil|Location2.X=2015.274mil|Location1.Y=3353.742mil|Location2.Y=3398.577mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1962.403mil|Location2.X=2015.274mil|Location1.Y=3353.742mil|Location2.Y=3398.577mil|Absolute=True">Region (0 hole(s)) Bottom Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.339mil|Location2.X=2060.772mil|Location1.Y=3367.299mil|Location2.Y=3412.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.339mil|Location2.X=2060.772mil|Location1.Y=3367.299mil|Location2.Y=3412.701mil|Absolute=True">Pad R12-2(2039.055mil,3390mil)  Bottom Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDN2OYUY0LBG45OHCZR05AJQVOAHGVMSHRUE5BY0LEYNIU5PF2TZBJ"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4843.992mil|Location2.Y=4875.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4843.992mil|Location2.Y=4875.614mil|Absolute=True">Pad REF1-3(2150mil,4859.803mil)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4806.591mil|Location2.Y=4838.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4806.591mil|Location2.Y=4838.213mil|Absolute=True">Pad REF1-2(2150mil,4822.402mil)  Top Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4769.189mil|Location2.Y=4800.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4769.189mil|Location2.Y=4800.811mil|Absolute=True">Pad REF1-1(2150mil,4785mil)  Top Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\%E7%94%9F%E6%B4%BB\%E6%AF%94%E8%B5%9B\GaN System\%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1\%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6\%E8%BF%9E%E6%8E%A5%E6%9D%BF\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4806.591mil|Location2.Y=4838.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2124.347mil|Location2.X=2175.653mil|Location1.Y=4806.591mil|Location2.Y=4838.213mil|Absolute=True">Pad REF1-2(2150mil,4822.402mil)  Top Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

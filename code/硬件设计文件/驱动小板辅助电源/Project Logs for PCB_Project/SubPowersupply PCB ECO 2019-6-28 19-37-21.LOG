@@ -1,0 +1,76 @@
+Added Component: Designator=C1(0603_C)
+Added Component: Designator=C2(0603_C)
+Added Component: Designator=C3(0603_C)
+Added Component: Designator=C4(0603_C)
+Added Component: Designator=C5(0603_C)
+Added Component: Designator=C6(0603_C)
+Added Component: Designator=C7(0603_C)
+Added Component: Designator=D1(SMA)
+Added Component: Designator=P1(HDR1X2)
+Added Component: Designator=P2(HDR2X2)
+Added Component: Designator=P3(HDR1X2)
+Added Component: Designator=P4(HDR1X2)
+Added Component: Designator=R1(0603_R)
+Added Component: Designator=R2(0603_R)
+Added Component: Designator=R3(0603_R)
+Added Component: Designator=R4(0603_R)
+Added Component: Designator=U1(SOT23-5)
+Added Component: Designator=U2(SOT23-5)
+Added Pin To Net: NetName=+5V Pin=P2-2
+Added Net: Name=+5V
+Added Pin To Net: NetName=6.5V Pin=C1-2
+Added Pin To Net: NetName=6.5V Pin=C3-2
+Added Pin To Net: NetName=6.5V Pin=P3-1
+Added Pin To Net: NetName=6.5V Pin=R1-2
+Added Pin To Net: NetName=6.5V Pin=U1-5
+Added Net: Name=6.5V
+Added Pin To Net: NetName=9V Pin=C2-2
+Added Pin To Net: NetName=9V Pin=C5-2
+Added Pin To Net: NetName=9V Pin=D1-1
+Added Pin To Net: NetName=9V Pin=P1-1
+Added Pin To Net: NetName=9V Pin=U1-1
+Added Pin To Net: NetName=9V Pin=U1-3
+Added Net: Name=9V
+Added Pin To Net: NetName=BUS_GND Pin=C1-1
+Added Pin To Net: NetName=BUS_GND Pin=C2-1
+Added Pin To Net: NetName=BUS_GND Pin=C3-1
+Added Pin To Net: NetName=BUS_GND Pin=C5-1
+Added Pin To Net: NetName=BUS_GND Pin=P1-2
+Added Pin To Net: NetName=BUS_GND Pin=P3-2
+Added Pin To Net: NetName=BUS_GND Pin=R2-1
+Added Pin To Net: NetName=BUS_GND Pin=U1-2
+Added Net: Name=BUS_GND
+Added Pin To Net: NetName=DGND Pin=P2-4
+Added Net: Name=DGND
+Added Pin To Net: NetName=MID_6.5V Pin=C4-2
+Added Pin To Net: NetName=MID_6.5V Pin=C7-2
+Added Pin To Net: NetName=MID_6.5V Pin=P4-1
+Added Pin To Net: NetName=MID_6.5V Pin=R3-2
+Added Pin To Net: NetName=MID_6.5V Pin=U2-5
+Added Net: Name=MID_6.5V
+Added Pin To Net: NetName=MID_9V Pin=C6-2
+Added Pin To Net: NetName=MID_9V Pin=D1-2
+Added Pin To Net: NetName=MID_9V Pin=U2-1
+Added Pin To Net: NetName=MID_9V Pin=U2-3
+Added Net: Name=MID_9V
+Added Pin To Net: NetName=MID_GND Pin=C4-1
+Added Pin To Net: NetName=MID_GND Pin=C6-1
+Added Pin To Net: NetName=MID_GND Pin=C7-1
+Added Pin To Net: NetName=MID_GND Pin=P4-2
+Added Pin To Net: NetName=MID_GND Pin=R4-1
+Added Pin To Net: NetName=MID_GND Pin=U2-2
+Added Net: Name=MID_GND
+Added Pin To Net: NetName=NetR1_1 Pin=R1-1
+Added Pin To Net: NetName=NetR1_1 Pin=R2-2
+Added Pin To Net: NetName=NetR1_1 Pin=U1-4
+Added Net: Name=NetR1_1
+Added Pin To Net: NetName=NetR3_1 Pin=R3-1
+Added Pin To Net: NetName=NetR3_1 Pin=R4-2
+Added Pin To Net: NetName=NetR3_1 Pin=U2-4
+Added Net: Name=NetR3_1
+Added Pin To Net: NetName=PWM_DOWN Pin=P2-3
+Added Net: Name=PWM_DOWN
+Added Pin To Net: NetName=PWM_UP Pin=P2-1
+Added Net: Name=PWM_UP
+Added Class: Name=SubPowersupply
+Added Room: Name=SubPowersupply

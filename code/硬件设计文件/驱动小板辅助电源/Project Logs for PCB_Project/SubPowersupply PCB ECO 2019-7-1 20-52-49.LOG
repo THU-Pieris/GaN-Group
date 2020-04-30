@@ -1,0 +1,12 @@
+Added Pin To Net: NetName=PWM_UP Pin=P2-1
+Added Pin To Net: NetName=+5V Pin=P2-2
+Added Pin To Net: NetName=PWM_DOWN Pin=P2-3
+Added Pin To Net: NetName=DGND Pin=P2-4
+Added Pin To Net: NetName=6.5V Pin=P3-1
+Added Pin To Net: NetName=BUS_GND Pin=P3-2
+Added Pin To Net: NetName=MID_6.5V Pin=P4-1
+Added Pin To Net: NetName=MID_GND Pin=P4-2
+Added Member To Class: ClassName=SubPowersupply Member=Component P2 Header 2X2
+Added Member To Class: ClassName=SubPowersupply Member=Component P3 Header 2
+Added Member To Class: ClassName=SubPowersupply Member=Component P4 Header 2
+Added Room: Name=SubPowersupply

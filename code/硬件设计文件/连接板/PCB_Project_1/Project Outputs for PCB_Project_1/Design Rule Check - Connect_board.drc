@@ -1,0 +1,69 @@
+Protel Design System Design Rule Check
+PCB File : G:\生活\比赛\GaN System\硬件设计\设计文件\连接板\Connect_board.PcbDoc
+Date     : 2019/8/2
+Time     : 19:03:15
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: 
+   Violation between Un-Routed Net Constraint: Net PWM_L_R2 Between Pad P16-4 (1360,4330mil) And Track on layer Top Layer (1394.527,2804.882mil)
+   Violation between Un-Routed Net Constraint: Track (1460mil,4330mil)(1460mil,4435mil)  Bottom Layer
+   Violation between Un-Routed Net Constraint: Track (1560mil,4330mil)(1560mil,4435mil)  Bottom Layer
+   Violation between Un-Routed Net Constraint: Track (1660mil,4330mil)(1660mil,4410mil)  Top Layer
+   Violation between Un-Routed Net Constraint: Net PWM_H_L2 Between Pad P16-6 (1160,4330mil) And Track on layer Top Layer (1202.795,4042.795mil)
+   Violation between Un-Routed Net Constraint: Net PWM_H_L1 Between Track on layer Top Layer (1197.795,3942.795mil) And Pad P16-5 (1260,4330mil)
+   Violation between Un-Routed Net Constraint: 
+   Violation between Un-Routed Net Constraint: 
+   Violation between Un-Routed Net Constraint: 
+   Violation between Un-Routed Net Constraint: Net DC400- Between PolyRegion on layer GND (3970.847,5052.862mil) And Track on layer Bottom Layer (3970.945,3738.74mil)
+   Violation between Un-Routed Net Constraint: Track (2230mil,4350mil)(2255mil,4375mil)  Top Layer
+   Violation between Un-Routed Net Constraint: 
+   Violation between Un-Routed Net Constraint: Net AGND Between Track on layer Top Layer (2865.932,4302.5mil) And Track on layer Bottom Layer (2870,3600mil)
+   Violation between Un-Routed Net Constraint: Net AC+ Between Pad PowerPad0-1 (1665,3512.795mil) And Pad PowerPad1-1 (1670,3512.795mil)
+   Violation between Un-Routed Net Constraint: Net A5V Between Pad JP1-10 (3148.307,4374.055mil) And Track on layer Bottom Layer (3235,3335mil)
+   Violation between Un-Routed Net Constraint: Net 9V Between Pad C22-1 (4105,5150mil) And PolyRegion on layer Bottom Layer (4151.452,3980.295mil)
+Rule Violations :17
+
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+   Violation between Region (0 hole(s)) Top Layer and 
+                     Pad C16-2(1405.945mil,4620mil)  Top Layer
+   Violation between Region (0 hole(s)) Bottom Layer and 
+                     Pad R12-2(2039.055mil,3390mil)  Bottom Layer
+Rule Violations :2
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=999mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+   Violation between Pad REF1-3(2150mil,4859.803mil)  Top Layer and 
+                     Pad REF1-2(2150mil,4822.402mil)  Top Layer
+   Violation between Pad REF1-1(2150mil,4785mil)  Top Layer and 
+                     Pad REF1-2(2150mil,4822.402mil)  Top Layer
+Rule Violations :2
+
+Processing Rule : Silk primitive without silk layer
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+
+Violations Detected : 21
+Time Elapsed        : 00:00:01

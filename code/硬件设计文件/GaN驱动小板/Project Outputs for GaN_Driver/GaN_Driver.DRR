@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: GaN_Driver.PcbDoc   2019/7/2  20:53:56
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII Plated RoundHoles File : GaN_Driver-Plated.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        15mil (0.381mm)          Round          65               5.06 Inch (128.61 mm)
+T2        18mil (0.4572mm)         Round          8                0.92 Inch (23.26 mm)
+T3        20mil (0.508mm)          Round          3                0.25 Inch (6.45 mm)
+T4        35.43mil (0.89992mm)     Round          16               2.50 Inch (63.56 mm)
+---------------------------------------------------------------------------
+Totals                                            92               8.74 Inch (221.89 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00
